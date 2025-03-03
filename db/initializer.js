@@ -6,7 +6,7 @@ const sql = `
 CREATE TABLE fortune (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userid CHAR(18) NOT NULL,
-    date TEXT DEFAULT (date('now'm 'localtime')),
+    date TEXT DEFAULT (date('now', 'localtime')),
     content TEXT
 );
 `;
