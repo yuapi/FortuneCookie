@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, SlashCommandBuilder, REST, Routes } = require('discord.js');
+const { Client, GatewayIntentBits, SlashCommandBuilder, REST, Routes, EmbedBuilder } = require('discord.js');
 const fortune = require('./fortune');
 require('dotenv').config();
 
@@ -42,15 +42,18 @@ client.on('interactionCreate', async (interaction) => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'today') {
+        await interaction.deferReply();
+
         const content = await fortune.get(interaction.user.id);
 
-        console.log('>>>> index.js, result ', content)
+        const fortuneEmbed = new EmbedBuilder()
+            .setTitle('오늘의 운세')
+            .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL()})
+            .setDescription(content)
+            .setColor(0xEDD482)
+            .setTimestamp();
 
-        // if (content) {
-        //     await interaction.reply({ content, ephemeral: true });
-        // } else {
-        //     await interaction.reply({ content: 'No fortune found for today.', ephemeral: true });
-        // }
+        await interaction.editReply({ embeds: [fortuneEmbed] });
     }
 })
 
