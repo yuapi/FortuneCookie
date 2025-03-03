@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits, SlashCommandBuilder, REST, Routes } = require('discord.js');
-const db = require('./db/controller');
+const fortune = require('./fortune');
 require('dotenv').config();
 
 const token = process.env.DISCORD_TOKEN;
@@ -42,14 +42,15 @@ client.on('interactionCreate', async (interaction) => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'today') {
-        const userid = interaction.user.id;
-        const content = await db.getFortune(userid);
+        const content = await fortune.get(interaction.user.id);
 
-        if (content) {
-            await interaction.reply({ content, ephemeral: true });
-        } else {
-            await interaction.reply({ content: 'No fortune found for today.', ephemeral: true });
-        }
+        console.log('>>>> index.js, result ', content)
+
+        // if (content) {
+        //     await interaction.reply({ content, ephemeral: true });
+        // } else {
+        //     await interaction.reply({ content: 'No fortune found for today.', ephemeral: true });
+        // }
     }
 })
 

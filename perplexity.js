@@ -12,7 +12,7 @@ async function chatCompletions(prompt) {
     const options = {
         method: 'POST',
         headers: {Authorization: `Bearer ${api_key}`, 'Content-Type': 'application/json'},
-        body: `{"model": "sonar","messages": ${prompt},"max_tokens": 70,"temperature": 0.7,"top_p": 1.0}`
+        body: `{"model": "sonar","messages": ${prompt},"max_tokens": 500,"temperature": 0.7,"top_p": 1.0}`
     };
 
     try {
