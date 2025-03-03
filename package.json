@@ -1,0 +1,26 @@
+{
+  "name": "fortunecookie",
+  "version": "1.0.0",
+  "description": "Discord bot that gives you a fortine cookie that tells you the fortune you want, on every day.",
+  "homepage": "https://github.com/yuapi/FortuneCookie#readme",
+  "bugs": {
+    "url": "https://github.com/yuapi/FortuneCookie/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuapi/FortuneCookie.git"
+  },
+  "license": "MIT",
+  "author": "yuapi",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "datetime": "^0.0.3",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7",
+    "sqlite3": "^5.1.7"
+  }
+}
